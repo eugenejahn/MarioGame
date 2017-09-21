@@ -13,10 +13,12 @@ black   = (  0,   0,  0 )
 blue    = (  0,   0, 255)
 red     = (255,   0,   0)
 
+
 bordercolor = green
 boxcolor    = white
 losecolor = green
 groundcolor = black
+
 
 marioRightUpPosition = [0,0]
 marioRightDownPosition  = [0,0]
@@ -110,15 +112,15 @@ def main():
 					marioPosition[1] = marioPosition[1]-20
 				if event.key == K_RIGHT:
 					marioPosition[0] = marioPosition[0]+10
-				if event.key == K_LEFT:
-					marioPosition[0] = marioPosition[0]-10
-					print marioPosition"""
+				if event.key == K_LEF					print marioPosition"""
 
 		keys = pygame.key.get_pressed()  #checking pressed keys
+
 		"""if keys[pygame.K_UP]:
 			marioPosition[1] = marioPosition[1]-10
 		if keys[pygame.K_DOWN]:
 			marioPosition[1] = marioPosition[1]+10"""
+		
 		if keys[pygame.K_UP]:
 			jump = True
 			changeimage = False
@@ -154,24 +156,34 @@ def main():
 		if notjump :
 			if keys[pygame.K_RIGHT]:
 				marioPosition[0] = marioPosition[0]+10
+				last_move = "right"
 				if changeimage:
 					changeimage = False
 				else:
 					changeimage = True
 			
-			if keys[pygame.K_LEFT]:
+			elif keys[pygame.K_LEFT]:
 				marioPosition[0] = marioPosition[0]-10
+				last_move = "left"
 				if changeimage:
 					changeimage = False
 				else:
 					changeimage = True
+			else:
+				last_move = "stop"
 			pygame.time.delay(50)
 		else:
-			if keys[pygame.K_RIGHT]:
+			'''if keys[pygame.K_RIGHT]:
 				marioPosition[0] = marioPosition[0]+10
 
 			if keys[pygame.K_LEFT]:
+				marioPosition[0] = marioPosition[0]-10'''
+			if last_move == "right":
+				marioPosition[0] = marioPosition[0]+10
+			elif last_move == "left":
 				marioPosition[0] = marioPosition[0]-10
+                
+                                
 			pygame.time.delay(50)
 
 		wheremario()
