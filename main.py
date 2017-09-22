@@ -2,6 +2,7 @@ import os
 import pygame, sys, random
 import random
 from pygame.locals import *
+from menu import Menu
 
 
 
@@ -311,5 +312,12 @@ def score():
 	text1pos.centerx = DISPLAYSURF.get_rect().centerx
 	text1pos.centery = DISPLAYSURF.get_rect().centery
 	DISPLAYSURF.blit(text1, (0,300))	
+
+
+
+
+
 if __name__ == '__main__':
-    main()
+	Menu = Menu()
+	Menu.startMenu()
+	main()
